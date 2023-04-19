@@ -1,0 +1,10 @@
+__pycache__/
+*.tex
+*.log
+*.pdf
+*.txt
+.idea
+.vscode
+venv/
+documents/
+*.swp
