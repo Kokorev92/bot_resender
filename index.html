@@ -1,10 +1,18 @@
 <html>
+<script type="text/javascript">
+    function on_send_click() {
+        var http = new XMLHttpRequest();
+        http.open('POST', '', true)
+        http.send(document.getElementById('message').value)
+    }
+</script>
 <head>
     <title>RESENDER</title>
     <meta charset="utf-8">
 </head>
 
 <body>
-Ну типа тут че то делаем...
+<textarea id="message" type="text"  cols="40" rows="5"></textarea><br/>
+<button onclick="on_send_click()" style="width:200px; height: 50px">SEND</button>
 </body>
 </html>
