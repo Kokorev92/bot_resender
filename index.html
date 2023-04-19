@@ -1,9 +1,11 @@
 <html>
 <script type="text/javascript">
     function on_send_click() {
+        var input_area = document.getElementById('message')
         var http = new XMLHttpRequest();
         http.open('POST', '', true)
-        http.send(document.getElementById('message').value)
+        http.send(input_area.value)
+        input_area.value = ""
     }
 </script>
 <head>

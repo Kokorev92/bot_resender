@@ -1,0 +1,12 @@
+[Unit]
+Description=Telegram resender bot
+After=multi-user.target
+
+[Service]
+Type=idle
+WorkingDirectory=/root/bot
+ExecStart=/usr/bin/python3 /root/bot_resender/main.py 
+Restart=always 
+
+[Install] 
+WantedBy=multi-user.target

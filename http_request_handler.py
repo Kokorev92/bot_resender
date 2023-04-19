@@ -5,6 +5,15 @@ from io import BytesIO
 import telebot
 import json
 
+bot_cfg_json = 'bot_settings.json'
+
+with open(bot_cfg_json, 'r') as cfg_file:
+    cfg = json.load(cfg_file)
+
+token = cfg['token']
+client_id = int(cfg['client_id'])
+
+bot = telebot.TeleBot(token)
 
 class Http_request_handler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
@@ -28,6 +37,7 @@ class Http_request_handler(http.server.BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/html')
         self.end_headers()
         print(body)
+        bot.send_message(client_id, body)
         response = BytesIO()
         response.write(b'This is POST request. ')
         response.write(b'Received: ')
