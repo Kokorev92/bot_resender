@@ -1,12 +1,7 @@
 <html>
 <script type="text/javascript">
-    function on_send_click() {
-        var input_area = document.getElementById('message')
-        var http = new XMLHttpRequest();
-        http.open('POST', '', true)
-        http.send(input_area.value)
-        input_area.value = ""
-    }
+
+
 </script>
 
 <head>
@@ -15,8 +10,46 @@
 </head>
 
 <body>
-    <textarea id="message" type="text" cols="40" rows="5"></textarea><br />
-    <button onclick="on_send_click()" style="width:200px; height: 50px">SEND</button>
+    <div id="main">
+        <textarea id="message" type="text" rows=20 autofocus></textarea><br />
+        <button onclick="on_send_click()">SEND</button>
+    </div>
+
+    <script>
+        var input_area = document.getElementById('message')
+
+        input_area.onkeydown = (e) => {
+            e = e || window.event
+            if (e.ctrlKey && e.keyCode == 13) {
+                on_send_click()
+            }
+        }
+
+        function on_send_click() {
+            var http = new XMLHttpRequest();
+            http.open('POST', '', true)
+            http.send(input_area.value)
+            input_area.value = ""
+        }
+
+    </script>
+
+    <style>
+        button {
+            width: 100%;
+            height: 50px;
+            display: block;
+        }
+
+        #main {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        #message {
+            width: 100%;
+        }
+    </style>
 </body>
 
 </html>
