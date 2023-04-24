@@ -9,3 +9,4 @@ venv/
 documents/
 *.swp
 bot_settings.json
+*.db
